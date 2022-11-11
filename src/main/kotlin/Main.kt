@@ -9,9 +9,9 @@ fun main() {
         "root", "qwe123"
     ).use {conn ->
         println("Connected to database")
-        conn.prepareStatement("select id, name, surname from PERSONAL_DATA where id = ?").use { pstm: PreparedStatement ->
-            pstm.setLong(1, 1)
-            pstm.executeQuery().use { rs ->
+        conn.prepareStatement("select id, name, surname from PERSONAL_DATA where id = ?").use { pst: PreparedStatement ->
+            pst.setLong(1, 1)
+            pst.executeQuery().use { rs ->
                 while (rs.next()) {
                     val id = rs.getLong("id")
                     val name = rs.getString("name")
